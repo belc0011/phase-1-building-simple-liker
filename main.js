@@ -23,3 +23,28 @@ function mimicServerCall(url="http://mimicServer.example.com", config={}) {
     }, 300);
   });
 }
+
+let heartColor = document.querySelectorAll(".like-glyph")
+console.log(heartColor);
+for (let heart of heartColor) {
+  heart.addEventListener("click", () => {
+    if (heartColor.style.color === "red") {
+      heartColor.style.color = "white";
+    }
+    else heartColor.style.color = "red";
+  })
+}
+
+/*function fillHeart() {
+
+}*/
+mimicServerCall()
+.then(data => {
+  if (data.code >= 200 && data.code < 400) {
+    fillHeart();
+  }
+})
+.catch(error => {
+  alert("uh oh!");
+  console.log(error.message);
+})
