@@ -9,23 +9,17 @@ Array.from(heartColor).forEach((heart, index) => {
   heart.addEventListener("click", () => {
   mimicServerCall("http://mimicServer.example.com", {})
   .then(data => {
-    console.log(heart)
-    console.log(data + "data should be here")
     if (data === "Pretend remote server notified of action!") {
-      console.log("first if statement")
       if (heart.classList.contains("activated-heart")) {
-        console.log("second if statement");
         heart.classList.remove("activated-heart");
-        document.getElementById("heart" + index).textContent.EMPTY_HEART
+        document.getElementById("heart" + index).textContent = EMPTY_HEART
       }
       else heart.classList.add("activated-heart");
-      document.getElementById("heart-" + index).textContent.FULL_HEART
-      console.log("else statement")
+      document.getElementById("heart-" + index).textContent = FULL_HEART
       }
     })
   .catch(error => {
     alert("uh oh!");
-    console.log(error.message);
     })
   })
 })
