@@ -19,9 +19,12 @@ Array.from(heartColor).forEach((heart, index) => {
       }
     })
   .catch(error => {
-    alert("uh oh!");
-    })
+    document.getElementById("modal").classList.remove("hidden")
+    setTimeout(function() {
+      document.getElementById("modal").classList.add("hidden")
+    }, 3000)
   })
+})
 })
 
 
