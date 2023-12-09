@@ -28,10 +28,10 @@ let heartColor = document.querySelectorAll(".like-glyph")
 console.log(heartColor);
 for (let heart of heartColor) {
   heart.addEventListener("click", () => {
-    if (heart.style.color === "red") {
-      heart.style.color = "white";
+    if (heart.style.backgroundColor === "red") {
+      heart.style.backgroundColor = "white";
     }
-    else heart.style.color = "red";
+    else heart.style.backgroundColor = "red";
   })
 }
 
