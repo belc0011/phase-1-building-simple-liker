@@ -2,7 +2,33 @@
 const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
-// Your JavaScript code goes here!
+let heartColor = document.querySelectorAll(".like-glyph")
+console.log(heartColor);
+Array.from(heartColor).forEach((heart, index) => {
+  heart.setAttribute("id", "heart-" + index)
+  heart.addEventListener("click", () => {
+  mimicServerCall("http://mimicServer.example.com", {})
+  .then(data => {
+    console.log(heart)
+    console.log(data + "data should be here")
+    if (data === "Pretend remote server notified of action!") {
+      console.log("first if statement")
+      if (heart.classList.contains("activated-heart")) {
+        console.log("second if statement");
+        heart.classList.remove("activated-heart");
+        document.getElementById("heart" + index).textContent.EMPTY_HEART
+      }
+      else heart.classList.add("activated-heart");
+      document.getElementById("heart-" + index).textContent.FULL_HEART
+      console.log("else statement")
+      }
+    })
+  .catch(error => {
+    alert("uh oh!");
+    console.log(error.message);
+    })
+  })
+})
 
 
 
@@ -24,27 +50,4 @@ function mimicServerCall(url="http://mimicServer.example.com", config={}) {
   });
 }
 
-let heartColor = document.querySelectorAll(".like-glyph")
-console.log(heartColor);
-for (let heart of heartColor) {
-  heart.addEventListener("click", () => {
-    if (heart.style.backgroundColor === "red") {
-      heart.style.backgroundColor = "white";
-    }
-    else heart.style.backgroundColor = "red";
-  })
-}
 
-/*function fillHeart() {
-
-}*/
-mimicServerCall()
-.then(data => {
-  if (data.code >= 200 && data.code < 400) {
-    fillHeart();
-  }
-})
-.catch(error => {
-  alert("uh oh!");
-  console.log(error.message);
-})
